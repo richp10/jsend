@@ -58,7 +58,7 @@ Error:
 package jsend
 
 import (
-	"encoding/json"
+	"github.com/json-iterator/go"
 	"errors"
 	"net/http"
 	"sync"
@@ -189,7 +189,7 @@ func (r *Response) Send() (int, error) {
 		r.Data([]byte(nil))
 	}
 
-	j, err := json.Marshal(r.fields)
+	j, err := jsoniter.Marshal(r.fields)
 
 	if err != nil {
 		return 0, err
